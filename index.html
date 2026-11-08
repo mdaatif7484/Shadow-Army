@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SHADOW ARMY Blox Fruits crew website">
+  <title>SHADOW ARMY | Blox Fruits Crew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">S</span><span>SHADOW <b>ARMY</b></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#members">Members</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#battles">Battles</a>
+      <a href="#news">News</a>
+      <a href="#join">Join Us</a>
+    </nav>
+    <button class="outline-btn admin-toggle" id="adminToggle">Admin: OFF</button>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">BLOX FRUITS • CREW NETWORK</p>
+        <h1>WE ARE<br><span>SHADOW ARMY</span></h1>
+        <p class="hero-description">One crew. One purpose. A thousand battles. Stand together, grow stronger, and leave your mark on the seas.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#members">Explore Crew</a>
+          <a class="outline-btn" href="#join">Join the Army</a>
+        </div>
+        <div class="hero-note"><span class="pulse-dot"></span> UNITED WE RISE • FEAR NONE</div>
+      </div>
+      <div class="hero-art" aria-label="Abstract crimson shadow warrior artwork">
+        <div class="red-orbit orbit-one"></div><div class="red-orbit orbit-two"></div>
+        <div class="shadow-emblem">S</div>
+        <div class="hero-art-label">THE SHADOW<br>NEVER FADES</div>
+      </div>
+    </section>
+
+    <section class="stats-grid section compact-section" id="stats">
+      <article class="stat-card"><span>Total Members</span><strong id="totalMembers">0</strong><small>THE ARMY</small></article>
+      <article class="stat-card"><span>Total Bounty</span><strong id="totalBounty">0</strong><small>CREW POWER</small></article>
+      <article class="stat-card"><span>Battle Wins</span><strong id="totalWins">0</strong><small>VICTORIES</small></article>
+      <article class="stat-card"><span>Announcements</span><strong id="totalNews">0</strong><small>CREW UPDATES</small></article>
+    </section>
+
+    <section class="section" id="members">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE PEOPLE BEHIND THE POWER</p><h2>CREW <span>MEMBERS</span></h2></div>
+        <div class="heading-actions">
+          <input id="memberSearch" class="search-input" type="search" placeholder="Search members...">
+          <button class="primary-btn admin-only" id="addMemberBtn">+ Add Member</button>
+        </div>
+      </div>
+      <div class="member-grid" id="memberGrid"></div>
+      <p class="empty-state" id="memberEmpty" hidden>No members found.</p>
+    </section>
+
+    <section class="section" id="leaderboard">
+      <div class="section-heading"><div><p class="eyebrow">WHO RULES THE SEAS?</p><h2>BOUNTY <span>LEADERBOARD</span></h2></div></div>
+      <div class="table-wrap">
+        <table><thead><tr><th>RANK</th><th>PLAYER</th><th>LEVEL</th><th>FRUIT</th><th>BOUNTY</th></tr></thead><tbody id="leaderboardBody"></tbody></table>
+      </div>
+    </section>
+
+    <section class="section" id="battles">
+      <div class="section-heading">
+        <div><p class="eyebrow">PROVE YOUR STRENGTH</p><h2>BATTLE <span>RECORDS</span></h2></div>
+        <button class="primary-btn admin-only" id="addBattleBtn">+ Add Battle</button>
+      </div>
+      <div class="battle-grid" id="battleGrid"></div>
+      <p class="empty-state" id="battleEmpty" hidden>No battle records yet.</p>
+    </section>
+
+    <section class="section" id="news">
+      <div class="section-heading">
+        <div><p class="eyebrow">LATEST FROM THE CREW</p><h2>SHADOW <span>TRANSMISSIONS</span></h2></div>
+        <button class="primary-btn admin-only" id="addNewsBtn">+ Post News</button>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+    </section>
+
+    <section class="section join-section" id="join">
+      <div class="join-copy"><p class="eyebrow">YOUR JOURNEY STARTS HERE</p><h2>JOIN THE <span>ARMY</span></h2><p>Think you have what it takes? Send an application to the crew.</p></div>
+      <form id="joinForm" class="join-form">
+        <label>Roblox username<input name="username" required maxlength="30" placeholder="Your Roblox username"></label>
+        <label>Level<input name="level" required type="number" min="1" max="3000" placeholder="Your level"></label>
+        <label>Preferred fruit<input name="fruit" required maxlength="30" placeholder="Your fruit"></label>
+        <label>Why do you want to join?<textarea name="reason" required maxlength="300" rows="3" placeholder="Tell us briefly..."></textarea></label>
+        <button class="primary-btn" type="submit">Send Application</button>
+        <p class="form-message" id="joinMessage" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">S</span><span>SHADOW <b>ARMY</b></span></a><p>Built for the crew. Not affiliated with Roblox or Blox Fruits.</p><a href="#home" class="back-top">BACK TO TOP ↑</a></footer>
+
+  <dialog id="memberDialog" class="modal">
+    <form id="memberForm" class="modal-content">
+      <button type="button" class="modal-close" data-close>×</button>
+      <p class="eyebrow">CREW DATABASE</p><h2 id="memberDialogTitle">ADD MEMBER</h2>
+      <input type="hidden" name="id">
+      <label>Player name<input name="name" required maxlength="30"></label>
+      <label>Role<input name="role" required maxlength="25" placeholder="Member / Elite / Leader"></label>
+      <div class="form-row">
+        <label>Level<input name="level" type="number" min="1" max="3000" required></label>
+        <label>Bounty (millions)<input name="bounty" type="number" min="0" step="0.1" required></label>
+      </div>
+      <div class="form-row">
+        <label>Fruit<input name="fruit" required></label>
+        <label>Race<input name="race" required></label>
+      </div>
+      <label>Battle wins<input name="wins" type="number" min="0" required value="0"></label>
+      <div class="modal-actions"><button class="primary-btn" type="submit">Save Member</button><button class="outline-btn danger-btn" type="button" id="deleteMemberBtn">Delete</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="battleDialog" class="modal">
+    <form id="battleForm" class="modal-content">
+      <button type="button" class="modal-close" data-close>×</button>
+      <p class="eyebrow">BATTLE ARCHIVE</p><h2>ADD BATTLE RECORD</h2>
+      <label>Player<input name="player" required></label>
+      <div class="form-row"><label>Opponent<input name="opponent" required></label><label>Result<select name="result"><option>Win</option><option>Loss</option></select></label></div>
+      <label>Battle date<input name="date" type="date" required></label>
+      <label>Notes<textarea name="notes" rows="2" maxlength="180" placeholder="Optional battle notes"></textarea></label>
+      <button class="primary-btn" type="submit">Save Battle</button>
+    </form>
+  </dialog>
+
+  <dialog id="newsDialog" class="modal">
+    <form id="newsForm" class="modal-content">
+      <button type="button" class="modal-close" data-close>×</button>
+      <p class="eyebrow">CREW TRANSMISSION</p><h2>POST ANNOUNCEMENT</h2>
+      <label>Title<input name="title" required maxlength="70"></label>
+      <label>Message<textarea name="message" required rows="4" maxlength="500"></textarea></label>
+      <button class="primary-btn" type="submit">Publish</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
